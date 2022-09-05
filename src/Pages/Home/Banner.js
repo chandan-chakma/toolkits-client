@@ -1,51 +1,54 @@
 import React from 'react';
+import banner1 from '../../asset/image/banner/banner1.png';
+import banner2 from '../../asset/image/banner/banner2.png';
+import banner3 from '../../asset/image/banner/banner3.png';
 
 const Banner = () => {
+
     return (
         <div>
-            <div class="carousel w-full">
-                <div id="item1" class="carousel-item w-full">
-                    <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                </div>
-                <div id="item2" class="carousel-item w-full">
-                    <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                </div>
-                <div id="item3" class="carousel-item w-full">
-                    <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                </div>
-                <div id="item4" class="carousel-item w-full">
-                    <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                </div>
+            <div className="carousel w-full">
 
+                <div id="item1" className="carousel-item w-full">
+                    <img src={banner1} className="w-full" alt='banner1' />
+                </div>
+                <div id="item2" className="carousel-item w-full">
+                    <img src={banner2} className="w-full" alt='banner2' />
+                </div>
+                <div id="item3" className="carousel-item w-full">
+                    <img src={banner3} className="w-full" alt='banner3' />
+                </div>
 
             </div>
-            <div class="flex justify-center w-full py-2 gap-2">
+            <div className="flex justify-center w-full py-2 gap-2">
                 <a href="#item1">
-                    <div class="avatar w-6">
-                        <div class="w-24 rounded">
-                            <img src="https://placeimg.com/192/192/people" />
+                    <div className="avatar">
+                        <div className="w-8 rounded">
+                            <img src={banner1} alt="Tailwind-CSS-Avatar-component" />
                         </div>
                     </div>
                 </a>
+
                 <a href="#item2">
-                    <div class="avatar w-6">
-                        <div class="w-24 rounded">
-                            <img src="https://placeimg.com/192/192/people" />
+                    <div className="avatar">
+                        <div className="w-8 rounded">
+                            <img src={banner2} alt="Tailwind-CSS-Avatar-component" />
                         </div>
                     </div>
                 </a>
+
                 <a href="#item3">
-                    <div class="avatar w-6">
-                        <div class="w-24 rounded">
-                            <img src="https://placeimg.com/192/192/people" />
+                    <div className="avatar">
+                        <div className="w-8 rounded">
+                            <img src={banner3} alt="Tailwind-CSS-Avatar-component" />
                         </div>
                     </div>
                 </a>
 
             </div>
-
-
         </div>
+
+
     );
 };
 

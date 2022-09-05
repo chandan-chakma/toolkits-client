@@ -1,5 +1,74 @@
-{
-    "id": 1,
-    "name": "",
-    "price": 66
-}
+[
+    {
+        "_id": 1,
+        "name": "PORTER-CABLE PXRA2676 Multi Purpose Restoration Tool",
+        "img": "https://i.ibb.co/tXNHpyv/product1.png",
+        "price": 66,
+        "description": "The new PORTER CABLE Restorer sands, grinds, buffs, polishes, and scrubs. It handles metal, wood, cement, and more.",
+        "quantity": 500,
+        "minimum-order-quantity": 150
+    },
+    {
+        "_id": 2,
+        "name": "DEWALT DW872 240v 2200W Metalica Chopsaw",
+        "img": "https://i.ibb.co/KmBmHx9/product2.png",
+        "price": 456,
+        "description": "Multi-Cutter Chop Saw offers versatility by cutting a wide variety of materials including ferrous and non-ferrous metals.",
+        "quantity": 234,
+        "minimum-order-quantity": 150
+    },
+    {
+        "_id": 3,
+        "name": "Ryobi Tools P505 18V ONE+ 5-1/2",
+        "img": "https://i.ibb.co/pZpqcd7/product3.png",
+        "price": 345,
+        "description": "You can adjust the foot of this cordless circular saw up to 50 degrees to cut at a variety of angles for different applications.",
+        "quantity": 350,
+        "minimum-order-quantity": 150
+    },
+    {
+        "_id": 4,
+        "name": "Multitool SOG Powerlock Scissors B61 Black",
+        "img": "https://i.ibb.co/yX3x2j8/product4.png",
+        "price": 115,
+        "description": "Sleek, black multitool set includes multi tool pliers, multitool screwdriver, scissors, knife, and wire crimper.",
+        "quantity": 500,
+        "minimum-order-quantity": 150
+    },
+    {
+        "_id": 5,
+        "name": "Black & Decker RTX-B 3 Speed RTX Rotary Tool with CASE",
+        "img": "https://i.ibb.co/d6mGCbM/product5.png",
+        "price": 3599,
+        "description": "2.0 Amp motor delivers the power you need to finish the job faster without getting bogged down under load.",
+        "quantity": 600,
+        "minimum-order-quantity": 150
+    },
+    {
+        "_id": 6,
+        "name": "Camo FBA_345015 Marksman Pro NB Tool Narrow Board",
+        "img": "https://i.ibb.co/h146zKz/product6.png",
+        "price": 66,
+        "description": "Pro-NB Guide installs two patented CAMO Edge Deck Screws through the edge of the deck board—not the surface.",
+        "quantity": 500,
+        "minimum-order-quantity": 150
+    },
+    {
+        "_id": 7,
+        "name": "DEWALT Router, Fixed Base, 1-3/4-HP (DW616)",
+        "img": "https://i.ibb.co/dbFCQSQ/product7.png",
+        "price": 46,
+        "description": "1-3/4-hp, 11-amp motor provides the power to rout smoothly through the toughest hardwoods",
+        "quantity": 500,
+        "minimum-order-quantity": 150
+    },
+    {
+        "_id": 8,
+        "name": "DEVON 6112 110mm Marble Cutter 1400W",
+        "img": "https://i.ibb.co/jwBzwBQ/product8.png",
+        "price": 159,
+        "description": "Marable cutter is hand-held power tools with a rotating diamond cutting discs such as cutting marble stone,tie,concrete.",
+        "quantity": 500,
+        "minimum-order-quantity": 150
+    }
+]
