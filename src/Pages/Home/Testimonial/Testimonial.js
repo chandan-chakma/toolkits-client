@@ -8,7 +8,7 @@ import people3 from '../../../asset/image/person/people3.png';
 
 const Testimonial = () => {
     return (
-        <div>
+        <div className='mb-12'>
             <Carousel
                 showArrows={true}
                 infiniteLoop={true}
@@ -21,7 +21,7 @@ const Testimonial = () => {
                     <img src={people1} alt='people1' />
                     <div className="myCarousel">
                         <h3>Shirley Fultz</h3>
-                        <h4>Designer</h4>
+                        <h4>Customer</h4>
                         <p>
                             It's freeing to be able to catch up on customized news and not be
                             distracted by a social media element on the same site
@@ -45,7 +45,7 @@ const Testimonial = () => {
                     <img src={people3} alt='people3' />
                     <div className="myCarousel">
                         <h3>Theo Sorel</h3>
-                        <h4>Designer</h4>
+                        <h4>CEO</h4>
                         <p>
                             I enjoy catching up with Fetch on my laptop, or on my phone when
                             I'm on the go!
