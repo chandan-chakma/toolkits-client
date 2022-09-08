@@ -7,13 +7,13 @@ import Testimonial from './Testimonial/Testimonial';
 import ProductVideo from './ProductVideo';
 import SponsorLogo from './SponsorLogo';
 import HomeContact from './HomeContact';
-import Footer from '../SharePages/Footer';
+
 
 
 
 const Home = () => {
     return (
-        <div>
+        <div className='mt-12'>
             <Banner></Banner>
             <Info></Info>
             <HomeTools></HomeTools>
@@ -22,8 +22,6 @@ const Home = () => {
             <HomeContact></HomeContact>
             <SponsorLogo></SponsorLogo>
             <Testimonial></Testimonial>
-            <Footer></Footer>
-
 
         </div>
     );

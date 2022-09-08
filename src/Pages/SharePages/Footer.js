@@ -28,38 +28,38 @@ const Footer = () => {
             </div>
             <div>
                 <span className="footer-title">Information</span>
-                <a className="link link-hover"> Site Map</a>
-                <a className="link link-hover">Specials</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Delivery Information</a>
-                <a className="link link-hover"> Order History</a>
-                <a className="link link-hover"> Privacy Policy</a>
+                <a href='/' className="link link-hover"> </a>
+                <a href='/' className="link link-hover">Specials</a>
+                <a href='/' className="link link-hover">Jobs</a>
+                <a href='/' className="link link-hover">Delivery Information</a>
+                <a href='/' className="link link-hover"> Order History</a>
+                <a href='/' className="link link-hover"> Privacy Policy</a>
             </div>
             <div>
                 <span className="footer-title">My Account</span>
-                <a className="link link-hover">Login</a>
-                <a className="link link-hover">My Account</a>
-                <a className="link link-hover">Checkout</a>
-                <a className="link link-hover">Address</a>
-                <a className="link link-hover">Order Status</a>
-                <a className="link link-hover"> Site Map</a>
+                <a href='/' className="link link-hover">Login</a>
+                <a href='/' className="link link-hover">My Account</a>
+                <a href='/' className="link link-hover">Checkout</a>
+                <a href='/' className="link link-hover">Address</a>
+                <a href='/' className="link link-hover">Order Status</a>
+                <a href='/' className="link link-hover"> Site Map</a>
             </div>
             <div>
                 <span className="footer-title">Customer Service</span>
-                <a className="link link-hover">My Accounte</a>
-                <a className="link link-hover">New</a>
-                <a className="link link-hover">Gift Cardsy</a>
-                <a className="link link-hover">Your Orders</a>
-                <a className="link link-hover">Subway</a>
+                <a href='/' className="link link-hover">My Accounte</a>
+                <a href='/' className="link link-hover">New</a>
+                <a href='/' className="link link-hover">Gift Cardsy</a>
+                <a href='/' className="link link-hover">Your Orders</a>
+                <a href='/' className="link link-hover">Subway</a>
             </div>
             <div>
                 <span className="footer-title">Let Us Help You</span>
-                <a className="link link-hover">My Account</a>
-                <a className="link link-hover">My Orders</a>
-                <a className="link link-hover">Shipping</a>
-                <a className="link link-hover">Amazon Prime</a>
-                <a className="link link-hover">Replacements</a>
-                <a className="link link-hover"> Manage</a>
+                <a href='/' className="link link-hover">My Account</a>
+                <a href='/' className="link link-hover">My Orders</a>
+                <a href='/' className="link link-hover">Shipping</a>
+                <a href='/' className="link link-hover">Amazon Prime</a>
+                <a href='/' className="link link-hover">Replacements</a>
+                <a href='/' className="link link-hover"> Manage</a>
             </div>
             <div>
                 <span className="footer-title">Sign Up For Newsletters</span>

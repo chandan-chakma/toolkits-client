@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const HomeTool = ({ homeTool }) => {
-    const { name, img, price, quantity, description } = homeTool;
+    const navigate = useNavigate();
+    const { _id, name, img, price, quantity, description } = homeTool;
+
+    const handlePurchase = (id) => {
+        navigate(`/purchase/${id}`)
+
+    }
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -19,7 +26,8 @@ const HomeTool = ({ homeTool }) => {
                 <p className='text-xl font-semibold'>price : ${price}</p>
                 <p className='text-xl font-semibold mb-2'>Quantity : {quantity}</p>
                 <div className="card-actions">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <button onClick={() => handlePurchase(_id)} className="btn btn-primary">Buy Now</button>
+
                 </div>
             </div>
         </div>
