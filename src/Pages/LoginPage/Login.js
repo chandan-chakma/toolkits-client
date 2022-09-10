@@ -1,26 +1,54 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
-import { FcGoogle } from "react-icons/fc";
-import { AiFillGithub } from "react-icons/ai";
-import { BsFacebook } from "react-icons/bs";
+import { Link, useNavigate } from 'react-router-dom';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from './../../firebase.init';
+import SocialLogin from './../SharePages/SocialLogin';
+
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+
+    }, [navigate, user])
+
+    let errorElement;
+    if (error) {
+        errorElement = <p className='text-error'>{error?.message}</p>
+    }
+
+    const onSubmit = data => {
+        signInWithEmailAndPassword(data.email, data.password)
+
+        console.log(data)
+    };
+
+
     return (
-        <div className='flex h-screen  justify-center items-center'>
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body">
+        <div className='flex min-h-screen  justify-center items-center'>
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body">
                     <h2 className='text-2xl font-bold text-secondary text-blue-700'>Please Login</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <label class="label">
-                            <span class="label-text">Email</span>
+                        <label className="label">
+                            <span className="label-text">Email</span>
 
                         </label>
-                        <input type="email" placeholder="Enter your email" class="input input-bordered w-full max-w-xs"
+                        <input type="email" autoComplete="on" placeholder="Enter your email" className="input input-bordered w-full max-w-xs"
                             {...register("email", {
                                 required: {
                                     value: true,
@@ -33,16 +61,16 @@ const Login = () => {
                             })} // custom message
                         />
                         <label className='label'>
-                            {errors.email?.type === "required" && <span className='text-error label-text-alt'>{errors.email.message}</span>}
-                            {errors.email?.type === "pattern" && <span className='text-error label-text-alt'>{errors.email.message}</span>}
+                            {errors.email?.type === "required" && <span className='text-error label-text-alt'>{errors.email?.message}</span>}
+                            {errors.email?.type === "pattern" && <span className='text-error label-text-alt'>{errors.email?.message}</span>}
                         </label>
 
 
-                        <label class="label">
-                            <span class="label-text">Password</span>
+                        <label className="label">
+                            <span className="label-text">Password</span>
 
                         </label>
-                        <input type="password" placeholder="Enter your password" class="input input-bordered w-full max-w-xs"
+                        <input type="password" autoComplete="on" placeholder="Enter your password" className="input input-bordered w-full max-w-xs"
                             {...register("password", {
                                 required: {
                                     value: true,
@@ -55,34 +83,20 @@ const Login = () => {
                             })} // custom message
                         />
                         <label className='label'>
-                            {errors.password?.type === "required" && <span className='text-error label-text-alt'>{errors.password.message}</span>}
-                            {errors.password?.type === "minLength" && <span className='text-error label-text-alt'>{errors.password.message}</span>}
+                            {errors.password?.type === "required" && <span className='text-error label-text-alt'>{errors.password?.message}</span>}
+                            {errors.password?.type === "minLength" && <span className='text-error label-text-alt'>{errors.password?.message}</span>}
 
                         </label>
 
 
                         <input className='btn btn-secondary w-full max-w-xs' type="submit" value='Login' />
                     </form>
+                    {errorElement}
 
                     <p className='font-bold '>New to ToolKits? <Link className='text-primary' to='/register'>Create New Account</Link></p>
 
-                    <div class="divider">OR</div>
 
-
-                    <button className='btn'>
-                        <FcGoogle className='pr-2 text-3xl' />
-                        continue With Google
-                    </button>
-
-                    <button className='btn btn-accent'>
-                        <AiFillGithub className='pr-2 text-3xl' />
-                        continue With github
-                    </button>
-
-                    <button className='btn btn-primary'>
-                        <BsFacebook className='pr-2 text-3xl' />
-                        continue With Facebook
-                    </button>
+                    <SocialLogin></SocialLogin>
 
                 </div>
             </div>
