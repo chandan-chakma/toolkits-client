@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../asset/image/logo/logo.png';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { signOut } from 'firebase/auth';
@@ -16,7 +16,7 @@ const Navbar = () => {
         <li><Link to='/tools'>Tools</Link></li>
         <li><Link to='/business'>Business </Link></li>
         <li><Link to='/'>Reviews</Link></li>
-        {user ? < button onClick={LogOut} className='btn'>Log Out</button>
+        {user ? < button onClick={LogOut} className='btn ml-2'>Log Out</button>
             : <li><Link to='/login'>Login</Link></li>}
     </>
 

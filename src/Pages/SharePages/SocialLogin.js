@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
-import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useNavigate } from 'react-router-dom';
+
 
 
 const SocialLogin = () => {
@@ -21,6 +22,8 @@ const SocialLogin = () => {
         }
 
     }, [navigate, userG, userF, userH])
+
+
 
     let errorElement;
     if (errorG || errorF || errorH) {
