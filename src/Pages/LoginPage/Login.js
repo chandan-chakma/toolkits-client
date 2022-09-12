@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import SocialLogin from './../SharePages/SocialLogin';
 import Loading from '../SharePages/Loading/Loading';
+import { toast } from 'react-toastify';
+
 
 
 const Login = () => {
@@ -18,7 +20,13 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+
+
+
 
     useEffect(() => {
         if (user) {
@@ -40,13 +48,27 @@ const Login = () => {
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
 
-        console.log(data)
+        console.log("data", data)
+
+
     };
 
+    const resetPassword = async (data) => {
+        const email = watch('email')
+        // console.log(email);
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('sent email')
+        }
+        else {
+            toast("enter your email")
+        }
+
+    }
 
 
     return (
-        <div className='flex min-h-screen  justify-center items-center'>
+        <div className='flex min-h-screen  justify-center items-center my-12'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className='text-2xl font-bold text-secondary text-blue-700'>Please Login</h2>
@@ -101,13 +123,14 @@ const Login = () => {
                         <input className='btn btn-secondary w-full max-w-xs' type="submit" value='Login' />
                     </form>
                     {errorElement}
-
+                    <button onClick={resetPassword} className='w-44 btn btn-accent'>Forget Password</button>
                     <p className='font-bold '>New to ToolKits? <Link className='text-primary' to='/register'>Create New Account</Link></p>
 
-
                     <SocialLogin></SocialLogin>
-
                 </div>
+
+
+
             </div>
         </div>
 

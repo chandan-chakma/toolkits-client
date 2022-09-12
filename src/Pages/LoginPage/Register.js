@@ -1,12 +1,10 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
-import { FcGoogle } from "react-icons/fc";
-import { AiFillGithub } from "react-icons/ai";
-import { BsFacebook } from "react-icons/bs";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import SocialLogin from './../SharePages/SocialLogin';
+
 
 const Register = () => {
     const navigate = useNavigate();
@@ -16,16 +14,21 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, error1] = useUpdateProfile(auth);
+
 
     if (user) {
         navigate('/')
     }
+
     let errorElement;
     errorElement = <p className='text-error'>{error?.message}</p>
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = async data => {
-        createUserWithEmailAndPassword(data.email, data.password);
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+        alert('Updated profile');
 
         console.log(data)
     };

@@ -4,12 +4,14 @@ import { AiFillGithub } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
 import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 
 
 const SocialLogin = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
 
 
     const [signInWithGoogle, userG, loadingG, errorG] = useSignInWithGoogle(auth);
@@ -18,10 +20,10 @@ const SocialLogin = () => {
 
     useEffect(() => {
         if (userG || userF || userH) {
-            navigate('/')
+            navigate(from, { replace: true });
         }
 
-    }, [navigate, userG, userF, userH])
+    }, [from, navigate, userG, userF, userH])
 
 
 
