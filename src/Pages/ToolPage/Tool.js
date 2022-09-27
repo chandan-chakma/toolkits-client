@@ -6,7 +6,7 @@ const Tool = ({ tool }) => {
     const navigate = useNavigate();
 
     const handlePurchase = (id) => {
-        navigate(`/purchase/${id}`)
+        navigate(`/tool/${id}`)
     }
 
     return (

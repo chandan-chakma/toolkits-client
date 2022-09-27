@@ -14,8 +14,8 @@ const Navbar = () => {
     const manuItem = <>
         <li><Link to='/home'>Home</Link></li>
         <li><Link to='/tools'>Tools</Link></li>
-        <li><Link to='/business'>Business </Link></li>
-        <li><Link to='/'>Reviews</Link></li>
+        <li><Link to='/dashboard'>Dashboard </Link></li>
+        {/* <li><Link to='/'>Reviews</Link></li> */}
         {user ? < button onClick={LogOut} className='btn ml-2'>Log Out</button>
             : <li><Link to='/login'>Login</Link></li>}
     </>
@@ -41,7 +41,7 @@ const Navbar = () => {
             {/* desktop */}
 
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0 font-semibold uppercase">
+                <ul className="menu menu-horizontal p-0 font-semibold capitalize">
                     {manuItem}
                 </ul>
             </div>

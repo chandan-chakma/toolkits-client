@@ -6,7 +6,7 @@ const HomeTool = ({ homeTool }) => {
     const { _id, name, img, price, quantity, description } = homeTool;
 
     const handlePurchase = (id) => {
-        navigate(`/purchase/${id}`)
+        navigate(`/tool/${id}`)
 
     }
     return (

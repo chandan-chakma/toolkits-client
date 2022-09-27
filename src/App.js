@@ -10,6 +10,10 @@ import Footer from './Pages/SharePages/Footer';
 import Login from './Pages/LoginPage/Login';
 import Registration from './Pages/LoginPage/Register';
 import RequireAuth from './Pages/SharePages/RequireAuth';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyProfile from './Pages/Dashboard/MyProfile';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import AddReview from './Pages/Dashboard/AddReview';
 
 function App() {
   return (
@@ -24,12 +28,20 @@ function App() {
           </RequireAuth>
         }></Route>
 
-        <Route path='/purchase/:purchaseId' element={
+
+
+        <Route path='/dashboard' element={
           <RequireAuth>
-            <PurchasePage></PurchasePage>
+            <Dashboard></Dashboard>
           </RequireAuth>
 
-        }></Route>
+        }>
+
+          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path='myorders' element={<MyOrders></MyOrders>}></Route>
+          <Route path='addreview' element={<AddReview></AddReview>}></Route>
+        </Route>
+
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Registration></Registration>}></Route>
 
