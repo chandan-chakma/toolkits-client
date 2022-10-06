@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import SocialLogin from './../SharePages/SocialLogin';
+import useToken from './../../Hooks/useToken';
 
 
 const Register = () => {
@@ -16,8 +17,10 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
 
+    const [token] = useToken(user)
 
-    if (user) {
+
+    if (token) {
         navigate('/')
     }
 
@@ -103,7 +106,7 @@ const Register = () => {
                         </label>
 
 
-                        <input className='btn btn-secondary w-full max-w-xs' type="submit" value='Login' />
+                        <input className='btn btn-secondary w-full max-w-xs' type="submit" value='Register' />
                     </form>
                     {errorElement}
 

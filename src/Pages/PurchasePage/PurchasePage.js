@@ -1,18 +1,82 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { toast } from 'react-toastify';
 
 const PurchasePage = () => {
+
     const { toolId } = useParams();
     const [tool, setTool] = useState({});
+    const [qty, setQty] = useState(0);
+    const [order, setOrder] = useState({});
+
+
     useEffect(() => {
         const url = `http://localhost:5000/tool/${toolId}`;
         fetch(url)
             .then(res => res.json())
-            .then(data => setTool(data))
+            .then(data => {
+                setTool(data)
+                setQty(data.moq)
+            })
     }, [toolId]);
-    const { img, name, price, description, moq } = tool;
+    const { _id, img, name, price, description, moq, quantity } = tool;
+
+
+
+    // const handleqtyMinus = (miniQty) => {
+    //     if (miniQty <= moq) {
+
+
+    //     }
+
+    // }
+
+    const handleBuy = (event) => {
+        const orderPrice = parseFloat(qty * price);
+        console.log(orderPrice)
+
+        const order = {
+            orderToolId: _id,
+            orderImg: img,
+            orderName: name,
+            orderQty: qty,
+            totalPrice: orderPrice
+
+        }
+
+        fetch('http://localhost:5000/order', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.success) {
+                    toast("")
+                }
+
+
+            })
+        console.log(order)
+    }
+
+    // const handleIncrease = (id) => {
+    //     const minimumqty = moq;
+    //     tool.find((buy) => buy._id === id);
+    //     setQty(qty + 1)
+
+
+    // }
+
+    // const handleQty=(event)=>{
+
+    // }
+
 
     return (
         <div className='flex justify-center items-center my-20'>
@@ -31,7 +95,7 @@ const PurchasePage = () => {
 
                         <p class="font-normal text-base mb-2">moq: {moq}</p>
 
-                        <div className='flex items-center'>
+                        <div className='flex items-center my-2'>
                             <div className='text-yellow-500'>
                                 <AiFillStar />
                             </div>
@@ -43,11 +107,16 @@ const PurchasePage = () => {
                             </div>
                         </div>
 
-                        <p>Quantity:</p>
+                        <p className='mt-4'>Quantity: <button disabled={qty <= moq} onClick={() => setQty(qty - 1)} className='ml-4'><AiOutlineMinus /></button>
+                            <input name='qty' type="number" value={qty} placeholder="Type here" class="input w-24 h-8 max-w-xs mx-3 input-bordered" />
+                            <button disabled={quantity <= qty} onClick={() => setQty(qty + 1)}><AiOutlinePlus /></button></p>
+
+
+
                     </div>
 
                     <div class="card-actions justify-end">
-                        <button class="btn btn-warning w-36">Buy Now</button>
+                        <button onClick={() => handleBuy(_id)} class="btn btn-warning w-36">Buy</button>
                     </div>
                 </div>
             </div>

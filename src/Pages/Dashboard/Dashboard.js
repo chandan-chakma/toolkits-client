@@ -6,7 +6,7 @@ const Dashboard = () => {
         <div class="drawer drawer-mobile mx-36 my-12">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content text-left">
-                <h2>Welcome to Dashboard</h2>
+                <h2 className='text-3xl text-green-700 font-bold'>Welcome to Dashboard</h2>
 
                 <Outlet></Outlet>
 
@@ -18,6 +18,7 @@ const Dashboard = () => {
                     <li><Link to='/dashboard'>My Profile</Link></li>
                     <li><Link to='/dashboard/myorders'>My Orders</Link></li>
                     <li><Link to='/dashboard/addreview'>Add Review</Link></li>
+                    <li><Link to='/dashboard/manageuser'>Manage user</Link></li>
                 </ul>
 
             </div>

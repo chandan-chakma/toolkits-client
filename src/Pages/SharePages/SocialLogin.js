@@ -5,6 +5,7 @@ import { BsFacebook } from "react-icons/bs";
 import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useNavigate, useLocation } from 'react-router-dom';
+import useToken from './../../Hooks/useToken';
 
 
 
@@ -18,12 +19,14 @@ const SocialLogin = () => {
     const [signInWithFacebook, userF, loadingF, errorF] = useSignInWithFacebook(auth);
     const [signInWithGithub, userH, loadingH, errorH] = useSignInWithGithub(auth);
 
+    const [token] = useToken(userG || userF || userH);
+
     useEffect(() => {
-        if (userG || userF || userH) {
+        if (token) {
             navigate(from, { replace: true });
         }
 
-    }, [from, navigate, userG, userF, userH])
+    }, [token, from, navigate])
 
 
 

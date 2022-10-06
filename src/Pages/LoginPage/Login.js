@@ -6,6 +6,7 @@ import auth from './../../firebase.init';
 import SocialLogin from './../SharePages/SocialLogin';
 import Loading from '../SharePages/Loading/Loading';
 import { toast } from 'react-toastify';
+import useToken from './../../Hooks/useToken';
 
 
 
@@ -23,17 +24,18 @@ const Login = () => {
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [token] = useToken(user);
 
 
 
 
 
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
         }
 
-    }, [from, navigate, user])
+    }, [token, from, navigate])
 
 
     if (loading) {
