@@ -9,7 +9,7 @@ const MyProfile = () => {
         event.preventDefault();
     }
     return (
-        <div className='mx-3 my-6'>
+        <div className='mx-3 mt-12'>
             <div className='flex items-center'>
                 <div class="avatar">
                     <div class="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

@@ -3,13 +3,16 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { toast } from 'react-toastify';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from './../../firebase.init';
 
 const PurchasePage = () => {
+    const [user] = useAuthState(auth);
 
     const { toolId } = useParams();
     const [tool, setTool] = useState({});
     const [qty, setQty] = useState(0);
-    const [order, setOrder] = useState({});
+
 
 
     useEffect(() => {
@@ -42,7 +45,10 @@ const PurchasePage = () => {
             orderImg: img,
             orderName: name,
             orderQty: qty,
-            totalPrice: orderPrice
+            orderPrice,
+            customerEmail: user.email,
+            customerName: user.displayName
+
 
         }
 
@@ -55,9 +61,12 @@ const PurchasePage = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                console.log('order', data);
                 if (data.success) {
-                    toast("")
+                    toast(`You have order ${order.orderName}`)
+                }
+                else {
+                    toast.error(`Already you have order ${order.orderName}`)
                 }
 
 
