@@ -5,11 +5,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { signOut } from 'firebase/auth';
 
+
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
     const LogOut = () => {
         signOut(auth);
-        localStorage.removeItem('accessToken')
+        localStorage.removeItem('accessToken');
+
 
 
     }
@@ -17,7 +19,9 @@ const Navbar = () => {
     const manuItem = <>
         <li><Link to='/home'>Home</Link></li>
         <li><Link to='/tools'>Tools</Link></li>
+
         <li><Link to='/dashboard'>Dashboard </Link></li>
+        <li><Link to='/blog'>Blog</Link></li>
         {/* <li><Link to='/'>Reviews</Link></li> */}
         {user ? < button onClick={LogOut} className='btn ml-2'>Log Out</button>
             : <li><Link to='/login'>Login</Link></li>}
@@ -48,8 +52,8 @@ const Navbar = () => {
                     {manuItem}
                 </ul>
             </div>
-            <div className='navbar-end'>
-                <label tabIndex="0" className="btn btn-ghost lg:hidden" for="my-drawer-2">
+            <div className='navbar-end lg:hidden'>
+                <label tabIndex="0" className="btn btn-ghost " for="my-drawer-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
 

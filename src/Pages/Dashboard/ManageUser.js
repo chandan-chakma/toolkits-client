@@ -4,12 +4,13 @@ import Loading from '../SharePages/Loading/Loading';
 import User from './User';
 
 const ManageUser = () => {
-    const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
         method: "GET",
         headers: {
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            authorization: `bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json()))
+
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -25,6 +26,7 @@ const ManageUser = () => {
                                 key={user._id}
                                 user={user}
                                 index={index}
+                                refetch={refetch}
                             ></User>)
                         }
 
