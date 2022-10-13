@@ -31,6 +31,23 @@ const User = ({ user, index, refetch }) => {
             })
     }
 
+    const removeUser = () => {
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: "DELETE",
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount) {
+                    refetch();
+                    toast(`user ${email} has been delete`);
+                }
+            })
+    }
+
 
     return (
 
@@ -39,7 +56,7 @@ const User = ({ user, index, refetch }) => {
             <th>{index + 1}</th>
             <td>{email}</td>
             <td>{role !== 'admin' && <button onClick={MakeAdmin} className='btn btn-sm'>Make Admin</button>}</td>
-            <td><button className='btn btn-sm'>Remove User</button></td>
+            <td><button onClick={removeUser} className='btn btn-sm'>Remove User</button></td>
 
         </tr>
 
