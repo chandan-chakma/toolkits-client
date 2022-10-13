@@ -5,81 +5,166 @@ const AddProduct = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
     return (
-        <div>
+        <div className='mx-32 mt-12'>
 
-            <form className=' ' onSubmit={handleSubmit(onSubmit)}>
-                <div >
-                    <label className="label">
-                        <span className="label-text">Name</span>
+            <form onSubmit={handleSubmit(console.log)}>
+
+                <div className='form-control w-full max-w-xs'>
+                    <label className='label'>
+                        <span className='label-text'>Name</span>
                     </label>
-                    <input type="text" placeholder="Your Name" className="input input-bordered w-full max-w-xs"
-                        {...register("name", {
-                            required: {
-                                value: true,
-                                message: "name is required"
-                            }
-                        })} />
-                    <label className="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt  text-error">{errors.name.message}</span>}
+                    <input type='text' className='input input-bordered w-full max-w-xs' placeholder="Product name"
+                        {...register("name",
+                            {
+                                required: {
+                                    value: true,
+                                    message: "Name is required",
+                                },
+                                minLength: {
+                                    value: 5,
+                                    message: "Provide valid name"
+                                },
+                                maxLength: {
+                                    value: 30,
+                                    message: 'Your product name is to long'
+                                }
+
+                            })} />
+                    <label className='label'>
+
+                        {errors.name?.type === 'required' && <span className='label-text-alt text-error'>{errors.name.message}</span>}
+                        {errors.name?.type === 'minLength' && <span className='label-text-alt text-error'>{errors.name.message}</span>}
+                        {errors.name?.type === 'maxLength' && <span className='label-text-alt text-error'>{errors.name.message}</span>}
                     </label>
 
-                    <label className="label">
-                        <span className="label-text">Email</span>
+                    {/* ===================================================================== */}
+
+                    <label className='label'>
+                        <span className='label-text'>Price</span>
                     </label>
-                    <input type="email" placeholder="Your Email" className="input input-bordered w-full max-w-xs"
-                        {...register("email", {
-                            required: {
-                                value: true,
-                                message: "email is required"
-                            },
-                            pattern: {
-                                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                message: 'provide a valid email'
-                            }
-                        })} />
-                    <label className="label">
-                        {errors.email?.type === 'required' && <span className="label-text-alt  text-error">{errors.email.message}</span>}
-                        {errors.email?.type === 'pattern' && <span className="label-text-alt  text-error">{errors.email.message}</span>}
+                    <input type='number' className='input input-bordered w-full max-w-xs' placeholder="Product price"
+                        {...register("price",
+                            {
+                                required: {
+                                    value: true,
+                                    message: "price is required",
+                                },
+                                min: {
+                                    value: 10,
+                                    message: "Provide standard market price more then $10"
+                                }
+
+                            })} />
+                    <label className='label'>
+
+                        {errors.price?.type === 'required' && <span className='label-text-alt text-error'>{errors.price.message}</span>}
+                        {errors.price?.type === 'min' && <span className='label-text-alt text-error'>{errors.price.message}</span>}
+                    </label>
+
+                    {/* ========================================================== */}
+
+                    <label className='label'>
+                        <span className='label-text'>Description</span>
+                    </label>
+                    <input type='text' className='input input-bordered w-full max-w-xs' placeholder="Product description"
+                        {...register("description",
+                            {
+                                required: {
+                                    value: true,
+                                    message: "description is required",
+                                },
+                                minLength: {
+                                    value: 20,
+                                    message: "Description must be at least 3 characters or long "
+                                },
+                                maxLength: {
+                                    value: 250,
+                                    message: 'Your product description is to long'
+                                }
+
+
+                            })} />
+                    <label className='label'>
+
+                        {errors.description?.type === 'required' && <span className='label-text-alt text-error'>{errors.description.message}</span>}
+                        {errors.description?.type === 'minLength' && <span className='label-text-alt text-error'>{errors.description.message}</span>}
+                        {errors.description?.type === 'maxLength' && <span className='label-text-alt text-error'>{errors.description.message}</span>}
+                    </label>
+
+
+                    {/* =========================================================================== */}
+
+                    <label className='label'>
+                        <span className='label-text'>Quantity</span>
+                    </label>
+                    <input type='number' className='input input-bordered w-full max-w-xs' placeholder="Product quantity"
+                        {...register("quantity",
+                            {
+                                required: {
+                                    value: true,
+                                    message: "quantity is required",
+                                },
+                                min: {
+                                    value: 20,
+                                    message: "Provide at least 10 quantity of your product"
+                                }
+
+                            })} />
+                    <label className='label'>
+
+                        {errors.quantity?.type === 'required' && <span className='label-text-alt text-error'>{errors.quantity.message}</span>}
+                        {errors.quantity?.type === 'min' && <span className='label-text-alt text-error'>{errors.quantity.message}</span>}
+                    </label>
+
+                    {/* ==================================================================== */}
+
+                    <label className='label'>
+                        <span className='label-text'>Moq</span>
+                    </label>
+                    <input type='number' className='input input-bordered w-full max-w-xs' placeholder="Product moq"
+                        {...register("moq",
+                            {
+                                required: {
+                                    value: true,
+                                    message: "Moq is required",
+                                },
+                                min: {
+                                    value: 10,
+                                    message: "Provide at least 10 moq of your product"
+                                }
+
+                            })} />
+                    <label className='label'>
+
+                        {errors.moq?.type === 'required' && <span className='label-text-alt text-error'>{errors.moq.message}</span>}
+                        {errors.moq?.type === 'min' && <span className='label-text-alt text-error'>{errors.moq.message}</span>}
+                    </label>
+
+                    {/* ======================================================================== */}
+
+                    <label className='label'>
+                        <span className='label-text'>Photo</span>
+                    </label>
+                    <input type='file' className='w-full max-w-xs' placeholder="Product image"
+                        {...register("image",
+                            {
+                                required: {
+                                    value: true,
+                                    message: "image is required",
+                                },
+
+
+                            })} />
+                    <label className='label'>
+
+                        {errors.image?.type === 'required' && <span className='label-text-alt text-error'>{errors.image.message}</span>}
+
                     </label>
                 </div>
 
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Specialty</span>
-                    </label>
-                    <select {...register('specialty')} class="select input-bordered w-full max-w-xs">
 
 
-
-                    </select>
-                    {/* <input type="text" placeholder="Your specialization" className="input input-bordered w-full max-w-xs"
-                        {...register("password", {
-                            required: {
-                                value: true,
-                                message: "password is required"
-                            },
-                        })} /> */}
-                    {/* <label className="label">
-                        {errors.password?.type === 'required' && <span className="label-text-alt  text-error">{errors.password.message}</span>}
-                    </label> */}
-                </div>
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Photo</span>
-                    </label>
-                    <input type="file" className="input input-bordered w-full max-w-xs"
-                        {...register("image", {
-                            required: {
-                                value: true,
-                                message: "image is required"
-                            }
-                        })} />
-                    <label className="label">
-                        {errors.file?.type === 'required' && <span className="label-text-alt  text-error">{errors.file.message}</span>}
-                    </label>
-                </div>
-
-                <input className='btn w-full max-w-xs text-white' type="submit" value="Add Doctor" />
+                <input type="submit" />
             </form>
 
 
