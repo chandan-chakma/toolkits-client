@@ -1,13 +1,71 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const AddProduct = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+
+    const imageStorageKey = '7bcc8a99c4ce0a167ec16030b49463fb';
+    const onSubmit = data => {
+        console.log(data);
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+        fetch(url, {
+            method: "POST",
+            body: formData
+
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const img = result.data.url;
+                    const tool = {
+                        name: data.name,
+                        price: data.price,
+                        description: data.description,
+                        quantity: data.quantity,
+                        moq: data.moq,
+                        img: img
+
+                    }
+                    fetch('http://localhost:5000/tool', {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(tool)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+
+                            if (data.insertedId) {
+                                toast('Your product added successfully');
+                                reset();
+                            }
+                            else {
+                                toast('failed to add product');
+                            }
+                            console.log(data)
+                        })
+
+
+                }
+                console.log(result)
+
+            })
+
+
+    };
+
+
     return (
         <div className='mx-32 mt-12'>
 
-            <form onSubmit={handleSubmit(console.log)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
 
                 <div className='form-control w-full max-w-xs'>
                     <label className='label'>
@@ -164,7 +222,7 @@ const AddProduct = () => {
 
 
 
-                <input type="submit" />
+                <input className='btn btn-primary' type="submit" value='Add Product' />
             </form>
 
 

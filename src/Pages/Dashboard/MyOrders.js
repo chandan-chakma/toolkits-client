@@ -32,7 +32,7 @@ const MyOrders = () => {
                 .then(data => {
                     setOrders(data);
                     console.log(data);
-                })
+                });
 
         }
     }, [user])

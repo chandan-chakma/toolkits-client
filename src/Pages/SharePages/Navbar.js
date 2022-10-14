@@ -20,7 +20,7 @@ const Navbar = () => {
         <li><Link to='/home'>Home</Link></li>
         <li><Link to='/tools'>Tools</Link></li>
 
-        <li><Link to='/dashboard'>Dashboard </Link></li>
+        {user && <li><Link to='/dashboard'>Dashboard </Link></li>}
         <li><Link to='/blog'>Blog</Link></li>
         {/* <li><Link to='/'>Reviews</Link></li> */}
         {user ? < button onClick={LogOut} className='btn ml-2'>Log Out</button>
