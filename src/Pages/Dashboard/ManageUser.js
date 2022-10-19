@@ -2,14 +2,27 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../SharePages/Loading/Loading';
 import User from './User';
+import { signOut } from 'firebase/auth';
+import auth from './../../firebase.init';
+import { useNavigate } from 'react-router-dom';
 
 const ManageUser = () => {
+    const navigate = useNavigate();
     const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
         method: "GET",
         headers: {
             authorization: `bearer ${localStorage.getItem('accessToken')}`
         }
-    }).then(res => res.json()))
+    }).then(res => {
+        if (res.status === 401 || res.status === 403) {
+            signOut(auth);
+            localStorage.removeItem('accessToken');
+            navigate('/')
+
+        }
+
+        return res.json()
+    }))
 
     if (isLoading) {
         return <Loading></Loading>

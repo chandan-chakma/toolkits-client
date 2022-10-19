@@ -20,6 +20,7 @@ import ManageOrder from './Pages/Dashboard/ManageOrder';
 import ManageProduct from './Pages/Dashboard/ManageProduct';
 import Blog from './Pages/Blog/Blog';
 import RequireAdmin from './Pages/SharePages/RequireAdmin';
+import OrderDetails from './Pages/PurchasePage/OrderDetails';
 
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
 
         <Route path='/tool/:toolId' element={<RequireAuth>
           <PurchasePage></PurchasePage>
+        </RequireAuth>}></Route>
+
+        <Route path='/order/:orderId' element={<RequireAuth>
+          <OrderDetails></OrderDetails>
         </RequireAuth>}></Route>
 
 

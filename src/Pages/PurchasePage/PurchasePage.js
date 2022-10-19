@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -12,6 +12,7 @@ const PurchasePage = () => {
     const { toolId } = useParams();
     const [tool, setTool] = useState({});
     const [qty, setQty] = useState(0);
+    const navigate = useNavigate();
 
 
 
@@ -64,6 +65,7 @@ const PurchasePage = () => {
                 console.log('order', data);
                 if (data.success) {
                     toast(`You have order ${order.orderName}`)
+                    navigate('/dashboard/myorders')
                 }
                 else {
                     toast.error(`Already you have order ${order.orderName}`)
