@@ -17,25 +17,24 @@ const ManageUser = () => {
         if (res.status === 401 || res.status === 403) {
             signOut(auth);
             localStorage.removeItem('accessToken');
-            navigate('/')
+            navigate('/');
 
         }
 
         return res.json()
     }))
+    // console.log('user', users)
 
     if (isLoading) {
         return <Loading></Loading>
     }
     return (
-        <div>
-            <h3>ami vat jha</h3>
-            <h3>{users.length}</h3>
-            <div class="overflow-x-auto">
-                <table class="table w-3/4">
+        <div className='mt-8'>
+            <div className="overflow-x-auto">
+                <table className="table w-3/4">
                     <tbody>
                         {
-                            users.map((user, index) => <User
+                            users.length > 0 && users.map((user, index) => <User
                                 key={user._id}
                                 user={user}
                                 index={index}

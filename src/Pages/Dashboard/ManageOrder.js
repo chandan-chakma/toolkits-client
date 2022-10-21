@@ -15,17 +15,16 @@ const ManageOrder = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setOrders(data);
             })
     }, [])
 
 
     return (
-        <div>
-            <h4>this is manage order:{orders.length}</h4>
-            <div class="overflow-x-auto">
-                <table class="table w-10/12">
+        <div className='mt-8'>
+            <div className="overflow-x-auto">
+                <table className="table w-10/12">
 
                     <thead>
                         <tr>
@@ -33,12 +32,12 @@ const ManageOrder = () => {
                     </thead>
                     <tbody>
                         {
-                            orders?.map(order => <tr
+                            orders.map(order => <tr
                                 key={order._id}
 
                             >
                                 <td>
-                                    <img className='w-11' src={order.orderImg} alt="" srcset="" />
+                                    <img className='w-11' src={order.orderImg} alt="" srcSet="" />
                                 </td>
 
                                 <td className='text-xs font-bold'>{order.orderName}</td>

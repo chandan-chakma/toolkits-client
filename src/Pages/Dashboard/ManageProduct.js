@@ -37,10 +37,9 @@ const ManageProduct = () => {
     }
 
     return (
-        <div className='mx-16'>
-            <h3>this is manage product</h3>
-            <div class="overflow-x-auto">
-                <table class="table w-4/6">
+        <div className='mx-16 mt-8'>
+            <div className="overflow-x-auto">
+                <table className="table w-4/6">
 
                     <thead>
                         <tr>
@@ -57,7 +56,7 @@ const ManageProduct = () => {
 
                                 >
                                     <td>
-                                        <img className='w-16' src={tool.img} alt="" srcset="" />
+                                        <img className='w-16' src={tool.img} alt="" srcSet="" />
                                     </td>
 
                                     <td>{tool.name}</td>

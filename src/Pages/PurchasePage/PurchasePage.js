@@ -39,7 +39,7 @@ const PurchasePage = () => {
 
     const handleBuy = (event) => {
         const orderPrice = parseFloat(qty * price);
-        console.log(orderPrice)
+        // console.log(orderPrice)
 
         const order = {
             orderToolId: _id,
@@ -62,7 +62,7 @@ const PurchasePage = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('order', data);
+                // console.log('order', data);
                 if (data.success) {
                     toast(`You have order ${order.orderName}`)
                     navigate('/dashboard/myorders')
@@ -73,7 +73,7 @@ const PurchasePage = () => {
 
 
             })
-        console.log(order)
+        // console.log(order)
     }
 
     // const handleIncrease = (id) => {
@@ -93,18 +93,18 @@ const PurchasePage = () => {
         <div className='flex justify-center items-center my-20'>
             {/* <h1>this for {toolId}</h1>
             <h3>name:{tool.name}</h3> */}
-            <div class="card card-compact lg:w-6/12  shadow-xl">
+            <div className="card card-compact lg:w-6/12  shadow-xl">
                 <figure><img src={img} alt="tool" /></figure>
-                <div class="card-body bg-red-500 text-white">
+                <div className="card-body bg-red-500 text-white">
                     <div className='lg:flex items-center justify-center'>
-                        <h2 class="card-title text-xl">{name}</h2>
+                        <h2 className="card-title text-xl">{name}</h2>
                         <p className='text-3xl'>$ {price}</p>
                     </div>
                     <div className='rounded-md bg-white text-black text-left px-12 py-5 mb-2'>
-                        <h2 class="font-bold text-xl">{name}</h2>
-                        <p class="font-normal text-base my-2">{description}</p>
+                        <h2 className="font-bold text-xl">{name}</h2>
+                        <p className="font-normal text-base my-2">{description}</p>
 
-                        <p class="font-normal text-base mb-2">moq: {moq}</p>
+                        <p className="font-normal text-base mb-2">moq: {moq}</p>
 
                         <div className='flex items-center my-2'>
                             <div className='text-yellow-500'>
@@ -119,15 +119,15 @@ const PurchasePage = () => {
                         </div>
 
                         <p className='mt-4'>Quantity: <button disabled={qty <= moq} onClick={() => setQty(qty - 1)} className='ml-4'><AiOutlineMinus /></button>
-                            <input name='qty' type="number" value={qty} placeholder="Type here" class="input w-24 h-8 max-w-xs mx-3 input-bordered" />
+                            <input name='qty' type="number" value={qty} placeholder="Type here" className="input w-24 h-8 max-w-xs mx-3 input-bordered" />
                             <button disabled={quantity <= qty} onClick={() => setQty(qty + 1)}><AiOutlinePlus /></button></p>
 
 
 
                     </div>
 
-                    <div class="card-actions justify-end">
-                        <button onClick={() => handleBuy(_id)} class="btn btn-warning w-36">Buy</button>
+                    <div className="card-actions justify-end">
+                        <button onClick={() => handleBuy(_id)} className="btn btn-warning w-36">Buy</button>
                     </div>
                 </div>
             </div>

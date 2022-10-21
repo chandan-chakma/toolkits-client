@@ -43,7 +43,7 @@ const User = ({ user, index, refetch }) => {
             }
         })
             .then(res => {
-                console.log('res', res);
+                // console.log('res', res);
                 if (res.status === 401 || res.status === 403) {
                     signOut(auth);
                     localStorage.removeItem('accessToken')
@@ -54,7 +54,7 @@ const User = ({ user, index, refetch }) => {
 
             })
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.deletedCount) {
                     refetch();
                     toast(`user ${email} has been delete`);
@@ -69,6 +69,7 @@ const User = ({ user, index, refetch }) => {
         <tr>
             <th>{index + 1}</th>
             <td>{email}</td>
+            {/* <td>{address}</td> */}
             <td>{role !== 'admin' && <button onClick={MakeAdmin} className='btn btn-sm'>Make Admin</button>}</td>
             <td><button onClick={removeUser} className='btn btn-sm'>Remove User</button></td>
 

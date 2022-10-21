@@ -20,7 +20,7 @@ const MyOrders = () => {
                 }
             })
                 .then(res => {
-                    console.log('res', res);
+                    // console.log('res', res);
                     if (res.status === 401 || res.status === 403) {
                         signOut(auth);
                         localStorage.removeItem('accessToken')
@@ -32,7 +32,7 @@ const MyOrders = () => {
                 })
                 .then(data => {
                     setOrders(data);
-                    console.log(data);
+                    // console.log(data);
                 });
 
         }
@@ -46,7 +46,7 @@ const MyOrders = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setReload(true);
 
             })
@@ -57,8 +57,8 @@ const MyOrders = () => {
         <div className='mt-12'>
             <h1 className='text-xl mb-4 text-primary font-semibold'>Your have order {orders.length} product</h1>
 
-            <div class="overflow-x-auto">
-                <table class="table w-4/6">
+            <div className="overflow-x-auto">
+                <table className="table w-4/6">
 
                     <thead>
 
@@ -71,7 +71,7 @@ const MyOrders = () => {
                                     key={index}
                                 >
                                     <td>
-                                        <img className='w-16' src={order.orderImg} alt={order.orderName} srcset="" />
+                                        <img className='w-16' src={order.orderImg} alt={order.orderName} srcSet="" />
                                     </td>
                                     <td className='text-sm font-bold'>{order.orderName}</td>
                                     <td className='font-semibold'>${order.orderPrice}
