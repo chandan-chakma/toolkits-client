@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { signOut } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const MyOrders = () => {
@@ -16,7 +16,7 @@ const MyOrders = () => {
             fetch(`http://localhost:5000/order?customerEmail=${user.email}`, {
                 method: "GET",
                 headers: {
-                    'authorization': `bearer ${localStorage.getItem('accessToken')}`
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             })
                 .then(res => {
@@ -78,8 +78,17 @@ const MyOrders = () => {
                                         <h3 className='text-xs'>qty:{order.orderQty}</h3>
 
                                     </td>
-                                    <td> <button className='btn btn-primary'>Pay</button></td>
-                                    <td> <button onClick={() => handleCancel(order._id)} className='btn btn-error'>Cancel</button></td>
+                                    <td> {order.orderPrice && !order.paid ?
+                                        <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-primary'>Pay</button></Link> : <span className='text-success font-bold text-xl'>paid</span>}
+                                    </td>
+
+
+
+                                    <td>
+                                        {order.orderPrice && !order.paid ? <button onClick={() => handleCancel(order._id)} className='btn btn-error'>Cancel</button> :
+                                            <p className='font-bold'>Transaction ID:<br /> <span className='text-info'>{order.transactionId}</span></p>
+                                        }
+                                    </td>
                                 </tr>)
                         }
                     </tbody>

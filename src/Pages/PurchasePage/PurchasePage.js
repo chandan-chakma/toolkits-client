@@ -14,8 +14,6 @@ const PurchasePage = () => {
     const [qty, setQty] = useState(0);
     const navigate = useNavigate();
 
-
-
     useEffect(() => {
         const url = `http://localhost:5000/tool/${toolId}`;
         fetch(url)
@@ -118,9 +116,10 @@ const PurchasePage = () => {
                             </div>
                         </div>
 
-                        <p className='mt-4'>Quantity: <button disabled={qty <= moq} onClick={() => setQty(qty - 1)} className='ml-4'><AiOutlineMinus /></button>
+                        <p className='mt-4'>Quantity: <button disabled={qty <= moq} onClick={() => setQty(parseFloat(qty) - 1)} className='ml-4'><AiOutlineMinus /></button>
                             <input name='qty' type="number" value={qty} placeholder="Type here" className="input w-24 h-8 max-w-xs mx-3 input-bordered" />
-                            <button disabled={quantity <= qty} onClick={() => setQty(qty + 1)}><AiOutlinePlus /></button></p>
+                            <button disabled={quantity <= qty} onClick={() => setQty(parseFloat(qty) + 1)}><AiOutlinePlus /></button></p>
+
 
 
 
