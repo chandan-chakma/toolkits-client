@@ -15,7 +15,7 @@ const PurchasePage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const url = `http://localhost:5000/tool/${toolId}`;
+        const url = `https://secret-cove-53846.herokuapp.com/tool/${toolId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -51,7 +51,7 @@ const PurchasePage = () => {
 
         }
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://secret-cove-53846.herokuapp.com/order', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

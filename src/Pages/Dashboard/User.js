@@ -9,7 +9,7 @@ const User = ({ user, index, refetch }) => {
     const navigate = useNavigate();
 
     const MakeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://secret-cove-53846.herokuapp.com/user/admin/${email}`, {
             method: "PUT",
             headers: {
                 authorization: `barer ${localStorage.getItem('accessToken')}`
@@ -36,7 +36,7 @@ const User = ({ user, index, refetch }) => {
     }
 
     const removeUser = () => {
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://secret-cove-53846.herokuapp.com/user/${email}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

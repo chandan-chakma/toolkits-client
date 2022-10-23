@@ -1,6 +1,15 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was made with tailwind,react,firebase,node,mongo
+ [toolkits](https://toolkits-bc596.web.app/home).
+
+ ## feature and functionality
+ - use can log in facebook and google.
+ - implement jwt.
+ - User have two role one is admin and normal user.
+ - all user can access their order and profile.
+ - admin can add product ,delete product etc.
+ - user can pay for product, when user pay it will show paid.
 
 ## Available Scripts
 

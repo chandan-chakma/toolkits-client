@@ -18,7 +18,7 @@ const MyProfile = () => {
     const { email } = user;
 
     // console.log(user.address);
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch(`http://localhost:5000/user/${email}`, {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch(`https://secret-cove-53846.herokuapp.com/user/${email}`, {
         method: "GET",
         headers: {
             authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -49,7 +49,7 @@ const MyProfile = () => {
     const onSubmit = (data) => {
 
         // console.log(data);
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://secret-cove-53846.herokuapp.com/user/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

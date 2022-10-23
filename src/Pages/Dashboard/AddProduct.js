@@ -32,7 +32,7 @@ const AddProduct = () => {
                         img: img
 
                     }
-                    fetch('http://localhost:5000/tool', {
+                    fetch('https://secret-cove-53846.herokuapp.com/tool', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json',

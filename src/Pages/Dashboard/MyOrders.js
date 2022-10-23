@@ -13,7 +13,7 @@ const MyOrders = () => {
     const [reload, setReload] = useState(false);
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/order?customerEmail=${user.email}`, {
+            fetch(`https://secret-cove-53846.herokuapp.com/order?customerEmail=${user.email}`, {
                 method: "GET",
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -40,7 +40,7 @@ const MyOrders = () => {
 
     const handleCancel = (id) => {
 
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://secret-cove-53846.herokuapp.com/order/${id}`, {
             method: 'DELETE',
 
         })

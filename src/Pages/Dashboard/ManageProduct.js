@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const ManageProduct = () => {
     const [tools, setTools] = UseTools();
 
-    // const { data: tools } = useQuery('tool', () => fetch('http://localhost:5000/tool', {
+    // const { data: tools } = useQuery('tool', () => fetch('https://secret-cove-53846.herokuapp.com/tool', {
     //     method: "GET",
     //     headers: {
     //         'content-type': "application/json",
@@ -19,7 +19,7 @@ const ManageProduct = () => {
     const handleDelete = (id) => {
         const confirmed = window.confirm('Do you want to delete your service');
         if (confirmed) {
-            const url = `http://localhost:5000/tool/${id}`;
+            const url = `https://secret-cove-53846.herokuapp.com/tool/${id}`;
             fetch(url, {
                 method: "DELETE",
 
