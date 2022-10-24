@@ -89,6 +89,12 @@ const MyOrders = () => {
                                             <p className='font-bold'>Transaction ID:<br /> <span className='text-info'>{order.transactionId}</span></p>
                                         }
                                     </td>
+
+                                    <td>
+                                        {order.orderPrice && order.paid && <button className='btn btn-success'>Pending....</button>
+
+                                        }
+                                    </td>
                                 </tr>)
                         }
                     </tbody>

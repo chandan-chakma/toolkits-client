@@ -1,10 +1,12 @@
 import { map } from '@firebase/util';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import Loading from '../SharePages/Loading/Loading';
 
 const ManageOrder = () => {
 
     const [orders, setOrders] = useState([]);
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
         fetch('https://secret-cove-53846.herokuapp.com/orders', {
             method: "GET",
@@ -19,6 +21,11 @@ const ManageOrder = () => {
                 setOrders(data);
             })
     }, [])
+
+    if (loading) {
+        setLoading(true)
+    }
+
 
 
     return (
@@ -44,8 +51,22 @@ const ManageOrder = () => {
                                 <td className='text-xs font-bold'>{order.customerEmail}</td>
                                 <td className='text-xs font-bold'>${order.orderPrice}
                                     <h3>qty:{order.orderQty}</h3></td>
-                                <td><button className='btn btn-success'></button></td>
-                                <td><button className='btn btn-warning'>Delivered</button></td>
+
+                                <td>
+                                    {
+                                        order.paid ?
+                                            <button className='btn btn-warning'>Shipped</button> :
+
+                                            <button className='btn btn-success text-'>Unpaid</button>
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        !order.paid && <button className='btn btn-error'>Cancel</button>
+
+
+                                    }
+                                </td>
                             </tr>)
                         }
 
